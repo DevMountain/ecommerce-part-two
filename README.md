@@ -15,7 +15,7 @@ During this project you will practice using an ORM (Mongoose) to work with your 
 
 Most companies sell some sort of product and service. For this project we will simulate buidling an eCommerce application. We will finish this project over the next two days.
 
-Today you are going to convert the current Mongo functionality to use Mongoose.  You will be creating a Product model and replacing the current product functionality with that model.  You will also be creating a user model.  You'll use MongoDB's indexing feature to be able to quickly grab users. If you have time, you'll also integrate authentication and the Mongoose model hooks/middleware.
+Today you are going to convert the current Mongo functionality to use Mongoose.  You will be creating a Product model and replacing the current product functionality with that model.  You will also be creating a user model.  You'll use MongoDB's indexing feature to be able to quickly grab users. 
 
 Use this README for instructions today, but use your codebase and push to your repository from day one.
 
@@ -57,60 +57,14 @@ Now go to each of your product endpoints and put the necessary Mongoose logic to
 
 **Breakpoint**: At this point you should be able to manipulate the product data via your Express endpoints just like you could when MongoJS was installed.  Test this using POSTMan and the command line or RoboMongo.  After you test the endpoints, go to your front-end product interface (if you were able to build it yesterday) and make sure that the interface still works and manipulates the data like you expect. You may have to update your data models on the front-end to match the model we just set up with Mongoose.
 
-### Step 3: Create User Model
+The next step will integrate your backend to the front-end application that you built yesterday.  You will also expand the application to include new functionality.
 
-Create a User model with the following fields:
+### Step 3: Connect Front-End
 
- - **Name**: The user's name
-  - String
-  - Required
- - **Email**: The user's email
-  - String
-  - Required
-  - Unique
-  - Index
- - **Password**: A hash of the user's password
-  - String
-  - Required
- - **Cart**: The user's cart, where they can store items
-  - Array
- - **Orders**: All of the orders a user has made
-  - Array
+Connect your front-end to your server.  Again, you are free to do this how you like.  
 
-Add the Cart and Orders field to the model, but don't worry about configuring or using them today.  You will use them in tomorrow's project.
+Make sure that you have an interface where users can view products and add them to their cart.  Tomorrow you'll add the actual back-end functionality, but it will give you a head start if you can build the interface today.
 
-Don't connect the user to your Express API.  You will use the User model later on.
-
-**Breakpoint**:  While we don't have the user model hooked up to an API, we can still test it.  Take the user model and create a new user, either in the server file or in the User file.  If you reset your server, it will run the code and create a new user.  Comment out the code and check RoboMongo to ensure that the user was created successfully.
-
-If you pass the last breakpoint, then you have successfully migrated your code to Monoose.  Using an ORM like Mongoose will help to maintain your app's data integrity.  This is an essential step in building a scalable application.
-
-The next two steps will introduce authentication and then integrate your backend to the front-end application that you built yesterday.  You will also expand the application to include new functionality.
-
-### Step 4: Add authentication
-
-In this step you will introduce authentication to your applicatoin.  You'll need to add some more functionality to your user model.  You will need to hash a password before saving it, and create a method that will check to see if a given string matches that user's password.  Then you will introduce local authentication using passport and sessions.
-
-While going through this step, feel free to reference [this](http://devsmash.com/blog/password-authentication-with-mongoose-and-bcrypt) blog post.  It covers almost exactly what you'll be doing in this step.
-
-Use Mongoose's [middleware](http://mongoosejs.com/docs/middleware.html) to generate and save a hash for the user's password. The best hook would likely be pre-save.  You can use a library like [bcrypt](https://www.npmjs.com/package/bcrypt) or [bcrypt-nodejs](https://www.npmjs.com/package/bcrypt-nodejs) to generate the hash.
-
-**Breakpoint**: Create a new user and check to see that the user's password is begin saved to the database as a hash, and not as the user's actual password.
-
-Now that you've hashed your user's password corretly, you'll need to create a method on the user to compare the password when the user tries to log in.  You can add any method to a model by adding it like so `ModelName.methods.methodName = function() {};`.  Create the method and use bycrypt's [compare](https://www.npmjs.com/package/bcrypt#async-recommended) functionality to see if they sent the correct password when signing in.
-
-**Breakpoint**: Test to make sure your password check method works.  Hard code in your server.js (or any other file) a lookup to find a user, then call the method on that user.  Make sure it returns `true` if the passwords match and `false` if they don't.
-
-Now your Mongoose logic should be set up  to work well with authenticaton.  The rest of the project consists of integrating this code with concepts that you've already learned.  The instructions will be very hands-off. Feel free to solve these problems how you like.  Refer to previous projects for examples.
-
-Use Express and Passport (and/or any other libraries you like) to set up a local authentication strategy.  When a user authenticates for the first time, save their information to the database via the User model. Some useful methods are [`findOne`](http://mongoosejs.com/docs/api.html#query_Query-findOne) and [`findOneAndUpdate`](http://mongoosejs.com/docs/api.html#query_Query-findOneAndUpdate).
-
-### Step 5: Connect Front-End
-
-Connect your front-end to your server.  Again, you are free to do this how you like.  It would be a good idea to a a register/login page and a dashboard page where the user can see their information and (in the future) their cart and orders.
-
-**Breakpoint**: You should now be able to register, login, and maintain user state on your front-end.
-
-If you have extra time, make sure that you have an interface where users can view products and add them to their cart.  Tomorrow you'll add the actual functionality, but it will give you a head start if you can build the interface today.
+**Breakpoint**: You should now be able to see all of the products on the front-end.
 
 Once you've finished the front-end, take some time to style your app and make it user-friendly.  Tomorrow you will finish the app by adding a a cart to the user, allow them to check out, and keep track of their current and past orders.
