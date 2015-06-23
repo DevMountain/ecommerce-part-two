@@ -15,7 +15,7 @@ During this project you will practice using an ORM (Mongoose) to work with your 
 
 Most companies sell some sort of product and service. For this project we will simulate buidling an eCommerce application. We will finish this project over the next two days.
 
-Today you are going to convert the current Mongo functionality to use Mongoose.  You will be creating a Product model and replacing the current product functionality with that model.  You will also be creating a user model.  You'll use MongoDB's indexing feature to be able to quickly grab users. 
+Today you are going to convert the current Mongo functionality to use Mongoose.  You will be creating a Product model and replacing the current product functionality with that model.
 
 Use this README for instructions today, but use your codebase and push to your repository from day one.
 
