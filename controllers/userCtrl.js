@@ -10,8 +10,8 @@ module.exports = {
         res.status(500).json(err);
       } else {
         res.json(result);
-      }
-    })
+      };
+    });
   },
   getUser: function(req, res){
     User.findById(req.params.id, function(err, theUser){
@@ -27,8 +27,8 @@ module.exports = {
               res.status(500).json(err);
             } else {
               res.json(user);
-            }
-          })
+            };
+          });
       };
     })
   },

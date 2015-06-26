@@ -4,12 +4,7 @@ app.config(function($routeProvider){
   $routeProvider
   .when('/register', {
     templateUrl: 'scripts/views/register/registerTmpl.html',
-    controller: 'registerCtrl',
-    resolve: {
-      users: function(adminService){
-          return adminService.getUsers();
-        }
-    }
+    controller: 'registerCtrl'
   })
   .when('/shopping', {
     templateUrl: 'scripts/views/shopping/shoppingTmpl.html',
@@ -17,6 +12,9 @@ app.config(function($routeProvider){
     resolve: {
       products: function(mainService){
         return mainService.getProducts();
+      },
+      users: function(adminService){
+        return adminService.getUsers();
       }
     }
   })

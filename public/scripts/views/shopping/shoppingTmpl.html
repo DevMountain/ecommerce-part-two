@@ -1,0 +1,16 @@
+Select User: <select ng-options="theUser._id as theUser.name for theUser in users" ng-model="userSelect" ng-change="updateUser()"></select>
+
+<div>
+  {{user.name}}
+  Cart:
+  <div ng-repeat="item in user.cart[0].products">
+    {{item.product.name}}, {{item.product.price}}, {{item.quantity}}
+  </div>
+</div>
+<br>
+<br>
+<div ng-repeat="product in products">
+  {{product.name}}, {{product.price}}, {{product._id}}
+  <br>
+  <button ng-click="addToCart(product)">Add to cart</button>
+</div>
