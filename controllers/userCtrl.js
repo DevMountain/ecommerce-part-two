@@ -18,14 +18,10 @@ module.exports = {
       if(err) {
         res.status(500).json(err);
       } else {
-        console.log(111111, theUser);
-        // res.json(theUser);
-          console.log(11111111, theUser);
-          // using .populate wrong?
           var options = {
             path: 'cart.products.product',
             model: 'Product'
-          }
+          };
           Product.populate(theUser, options, function(err, user){
             if(err){
               res.status(500).json(err);

@@ -5,8 +5,7 @@ var userSchema = new mongoose.Schema({
   name: { type: String, index: true, lowercase: true },
   email: { type: String, required: true, index: true, unique: true},
   status: { type: String, enum: ['active', 'archived'], default: 'active'},
-  cart: [cartSchema],
-  orders: []
+  cart: [cartSchema]
 })
 
 module.exports = mongoose.model('User', userSchema);
