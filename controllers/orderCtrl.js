@@ -44,8 +44,9 @@ module.exports = {
         res.json(result);
       };
     });
-  },
-  archiveOrder: function(req, res){
-    
   }
+  // ,
+  // archiveOrder: function(req, res){
+  //
+  // }
 }

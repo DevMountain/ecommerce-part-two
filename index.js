@@ -36,7 +36,7 @@ app.get('/api/orders', orderCtrl.getOrders);
 app.get('/api/order/:id', orderCtrl.getOrder);
 app.post('/api/order', orderCtrl.addOrder);
 app.put('/api/order', orderCtrl.editOrder);
-app.delete('/api/order', orderCtrl.archiveOrder);
+// app.delete('/api/order', orderCtrl.archiveOrder);
 
 mongoose.connect(mongoUri);
 mongoose.connection.once('open', function(){
