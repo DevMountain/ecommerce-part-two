@@ -1,15 +1,20 @@
 var app = angular.module('ecommerce');
-app.service('mainService', function($http){
+app.service('mainService', function($http, $q){
 
 this.getProducts = function(){
-  return $http({
+  var deferred = $q.defer();
+  $http({
     method: 'GET',
     url: 'http://localhost:9999/api/products'
+  }).then(function(res){
+    deferred.resolve(res.data);
+  }, function(err){
+    deferred.reject(err)
   })
+  return deferred.promise;
 }
 
 this.postProduct = function(product){
-  console.log('service')
   return $http({
     method: 'POST',
     url: 'http://localhost:9999/api/products',

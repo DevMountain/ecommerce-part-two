@@ -3,7 +3,7 @@ var app = angular.module('ecommerce', ['ngRoute']);
 app.config(function($routeProvider){
   $routeProvider
   .when('/register', {
-    templateUrl: 'views/register/registerTmpl.html',
+    templateUrl: 'scripts/views/register/registerTmpl.html',
     controller: 'registerCtrl',
     resolve: {
       users: function(adminService){
@@ -12,7 +12,7 @@ app.config(function($routeProvider){
     }
   })
   .when('/shopping', {
-    templateUrl: 'views/shopping/shoppingTmpl.html',
+    templateUrl: 'scripts/views/shopping/shoppingTmpl.html',
     controller: 'shoppingCtrl',
     resolve: {
       products: function(mainService){
@@ -21,11 +21,11 @@ app.config(function($routeProvider){
     }
   })
   .when('/admin', {
-    templateUrl: 'views/shopping/shoppingTmpl.html',
+    templateUrl: 'scripts/views/admin/adminTmpl.html',
     controller: 'adminCtrl',
     resolve: {
       products:function(mainService){
-        return mainService.getProducts()
+        return mainService.getProducts();
       }
     }
   })
