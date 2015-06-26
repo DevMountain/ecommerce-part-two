@@ -50,4 +50,18 @@ this.getUser = function(id){
   return deferred.promise;
 }
 
+this.updateCart = function(id, cart){
+  var deferred = $q.defer();
+  $http({
+    method: 'PUT',
+    url: 'http://localhost:9999/api/user/' + id,
+    data: cart
+  }).then(function(res){
+    deferred.resolve(res.data);
+  }, function(err){
+    deferred.reject(err);
+  })
+  return deferred.promise;
+}
+
 })
